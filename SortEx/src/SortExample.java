@@ -3,9 +3,39 @@ public class SortExample {
         int[] numbers = {40, 7, 59, 4, 1};
         displayValues(numbers);
 
-//        selectionSort(numbers);
-        bubbleSort(numbers);
+//        sequentialSearch(numbers, 13);
+//        sequentialSearch(numbers, 7);
+        binarySearch(numbers, 7);
+
+        selectionSort(numbers);
+//        bubbleSort(numbers);
         displayValues(numbers);
+        binarySearch(numbers, 7);
+    }
+
+    static public void binarySearch(int[] num, int val){
+        int low = 0;
+        int high = num.length-1;
+        while (high>=low){
+            int mid = (low+high)/2;
+            if (num[mid]==val){
+                System.out.println("The number "+val+" is at position "+mid+" in the list");
+                return;
+            }
+            if (num[mid]<val)
+                low = mid+1;
+            if (num[mid]>val)
+                high= mid-1;
+        }
+        System.out.println("The number "+val+" is not in the list");
+    }
+
+    static void sequentialSearch(int[] num, int val){
+        for (int i=0; i< num.length; i++){
+            System.out.println("The number "+val+" is at position "+i+" on the list");
+            return;
+        }
+        System.out.println("The number "+val+" is not on the list");
     }
 
     static void bubbleSort(int[] num){
@@ -38,6 +68,6 @@ public class SortExample {
     static void displayValues(int[] num){
         for (int i=0; i<num.length; i++)
             System.out.print(num[i] + " ");
-        System.out.println("\n");
+        System.out.println();
     }
 }
